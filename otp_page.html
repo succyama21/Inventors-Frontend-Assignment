@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krist_OTP_page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-white">
+  <div class="min-h-screen grid grid-cols-1 md:grid-cols-2">
+    <!-- Left Section -->
+    <div class="relative hidden md:flex items-center justify-center bg-white">
+      <img
+        src="img/otppage.png" alt="otp page" class="h-full w-full object-cover"/>
+    </div>
+
+    <!-- Right Section -->
+    <div class="flex items-center justify-center bg-gray-50 px-8 py-16">
+      <div class="w-full max-w-md">
+
+         <button class="flex items-center text-gray-600 hover:text-gray-800 mb-6">
+            <a href="forgot_password_page.html">
+            <img src="img/back.png" alt="back" class="text-2xl mr-2">
+            </a>
+        </button>
+
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">Enter OTP</h1>
+        <p class="text-gray-500 mb-8">We have shared a code to your registered email address roberfox@example.com</p>
+
+        <form class="space-y-6">
+           <div class="flex gap-3 mb-6">
+              <input type="text" maxlength="1" class="otpBox w-12 h-12 text-center border rounded-lg text-lg focus:outline-none focus:border-black" />
+              <input type="text" maxlength="1" class="otpBox w-12 h-12 text-center border rounded-lg text-lg focus:outline-none focus:border-black" />
+              <input type="text" maxlength="1" class="otpBox w-12 h-12 text-center border rounded-lg text-lg focus:outline-none focus:border-black" />
+              <input type="text" maxlength="1" class="otpBox w-12 h-12 text-center border rounded-lg text-lg focus:outline-none focus:border-black" />
+              <input type="text" maxlength="1" class="otpBox w-12 h-12 text-center border rounded-lg text-lg focus:outline-none focus:border-black" />
+           </div>
+
+          <button type="submit"class="w-full bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition">
+            Verify
+          </button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+   <script>
+    const boxes = document.querySelectorAll(".otpBox");
+
+    boxes.forEach((box, index) => {
+      box.addEventListener("input", () => {
+        if (box.value.length === 1 && index < boxes.length - 1) {
+          boxes[index + 1].focus();
+        }
+      });
+
+      box.addEventListener("keydown", (e) => {
+        if (e.key === "Backspace" && index > 0 && box.value === "") {
+          boxes[index - 1].focus();
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
